@@ -6,8 +6,7 @@ export const getTrending = async (page: number) => {
     const response = await axiosWithConfig.get(
       `trending/all/day?language=en-US&page=${page}`
     );
-    console.log({ response });
 
-    return response.data as ResponseData;
+    return response.data as ResponseData | undefined;
   } catch (error) {}
 };
