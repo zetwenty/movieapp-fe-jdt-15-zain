@@ -1,11 +1,17 @@
 import axios from "axios";
 
+let bearerToken = "";
+
 const axiosWithConfig = axios.create();
+
+export const setAxiosConfig = (token: string) => {
+  bearerToken = token;
+};
 
 axiosWithConfig.interceptors.request.use((axiosConfig: any) => {
   axiosConfig.baseURL = "https://api.themoviedb.org/3/";
   axiosConfig.headers.Authorization =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNTA0MjI3MGM3ZmUyNTIwNWRiNDQ5YWEyODMxMTExMiIsIm5iZiI6MTc0MTc0NjYzNC43NzEwMDAxLCJzdWIiOiI2N2QwZjFjYTEzOTkwYTA1OGI2MGE1OGEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.NGMGjboamcbZxjcGuIVdaXYsxpwtZfkj8Q860DzgZDs";
+    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyY2Y3YzMxMmVhYzRjMTE4NzFmOGY0N2NmN2JjOWRmNSIsIm5iZiI6MTU3OTAwODU3MC41NTksInN1YiI6IjVlMWRjMjNhYTI0YzUwMDAxMzBiZTZjNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.23p3_LsFv9KwwKKgSvw0oGzJSTFrhSpgwtL6Q13U9P8";
 
   return axiosConfig;
 });
